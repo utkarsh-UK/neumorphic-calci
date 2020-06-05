@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
 
-class Button extends StatelessWidget {
+class Button extends StatefulWidget {
   final String text;
   final TextStyle style;
   final bool isDigit;
@@ -16,11 +16,22 @@ class Button extends StatelessWidget {
   }) : assert(text != null && style != null);
 
   @override
+  _ButtonState createState() => _ButtonState();
+}
+
+class _ButtonState extends State<Button> {
+  bool _isPressed = false;
+
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return InkWell(
-      onTap: onButtonPressed,
+    return Listener(
+      onPointerUp: (event) {
+        setState(() => _isPressed = false);
+        widget.onButtonPressed();
+      },
+      onPointerDown: (event) => setState(() => _isPressed = true),
       child: Container(
         width: size.width * 0.15,
         height: size.height * 0.1,
@@ -28,6 +39,32 @@ class Button extends StatelessWidget {
         decoration: BoxDecoration(
           color: MyColors.bgColor,
           borderRadius: BorderRadius.circular(10.0),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: !_isPressed
+                ? [
+                    MyColors.bgColor,
+                    Color(0xFF443898),
+                    Color(0xFF6b60bd),
+                  ]
+                : [
+                    Color(0xFF443898),
+                    Color(0xFF443898),
+                    MyColors.bgColor,
+                  ],
+            stops: !_isPressed
+                ? [
+                    0.1,
+                    0.4,
+                    1.0,
+                  ]
+                : [
+                    0.1,
+                    0.2,
+                    1.0,
+                  ],
+          ),
           boxShadow: [
             BoxShadow(
               color: MyColors.leftShadowColor,
@@ -45,8 +82,8 @@ class Button extends StatelessWidget {
         ),
         child: FittedBox(
           child: Text(
-            text,
-            style: style,
+            widget.text,
+            style: widget.style,
           ),
         ),
       ),
