@@ -1,16 +1,18 @@
-# newcalci
+# Neumorphic Calculator App
 
-A new Flutter project.
+### Introduction
 
-## Getting Started
+A demo prototype calculator app with **Soft UI** build from scratch.
 
-This project is a starting point for a Flutter application.
+### Installation
+To experience on the real device, install the ARM64 version APK [Neu Calci](outputs/NeuCalci.apk)
 
-A few resources to get you started if this is your first Flutter project:
+### Some Glimpse
+<p float="left">
+  <img src="screenshots/home.png" width="150"  alt="Home Screen"  title="Home Screen"/>
+  <img src="screenshots/calculation.png" width="150"  alt="Calculation Screen" title="Stats Screen"/> 
+</p>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+>Made with love by **Utkarsh** :heart:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+>*This app is built with sole intention of exploring and showcasing Flutter skills :relaxed:*
