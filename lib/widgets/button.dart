@@ -5,10 +5,14 @@ import '../constants/colors.dart';
 class Button extends StatelessWidget {
   final String text;
   final TextStyle style;
+  final bool isDigit;
+  final Function() onButtonPressed;
 
   Button({
     @required this.text,
     @required this.style,
+    this.isDigit = true,
+    this.onButtonPressed,
   }) : assert(text != null && style != null);
 
   @override
@@ -16,7 +20,7 @@ class Button extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return InkWell(
-      onTap: () => print('Clicked'),
+      onTap: onButtonPressed,
       child: Container(
         width: size.width * 0.15,
         height: size.height * 0.1,
